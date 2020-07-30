@@ -1,0 +1,52 @@
+#version: '3'
+#
+#services:
+#  postgres:
+#    image: postgres:11.4-alpine
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#      - postgres_backups:/backups
+#    env_file:
+#      - .env
+#
+#  redis:
+#    image: redis:5-alpine
+#    ports:
+#      - "6379:6379"
+
+#  rabbitmq:
+#    image: rabbitmq:3.7-alpine
+#    expose:
+#      - "5672"
+#    ports:
+#      - "5672:5672"
+#    volumes:
+#      - rabbitmq_data:/var/lib/rabbitmq
+
+#  app:
+#    build:
+#      context: .
+#      dockerfile: ./docker/app/Dockerfile
+#    env_file:
+#      - .env
+#    volumes:
+#      - app_logs:/application/logs
+#      - app_static:/application/static
+#      - app_media:/application/media
+#    depends_on:
+#      - postgres
+#      - redis
+
+#  nginx:
+#    build:
+#      context: .
+#      dockerfile: ./docker/nginx/Dockerfile
+#    expose:
+#      - "80"
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - app_static:/application/static
+#      - app_media:/application/media
+#    depends_on:
+#      - app
